@@ -2,19 +2,25 @@ import heapq
 from move import Move
 
 class Group06:
+    #Medir o labirinto
     def __init__(self, maze, prize_positions, agent_position, opponent_position, max_turns):
         self.rows = len(maze)
         self.cols = len(maze[0])
 
+    #Heurística: Distância de Manhattan
     def get_manhattan_dist(self, p1, p2):
         return abs(p1[0] - p2[0]) + abs(p1[1] - p2[1])
 
+
     def a_star(self, current_maze, start, goal):
+        #Se ja ta em cima do prêmio, não precisa se mover
         if start == goal:
             return 0, Move.STAY
 
         # frontier: (f, g, current_pos, first_move_index)
-        # Usamos o índice do movimento para evitar erro de comparação de Enums
+        # Uso de índice do movimento para evitar erro de comparação de Enums
+        
+        # Mapemento de movimentos e seus deltas correspondentes
         moves_list = [Move.UP, Move.DOWN, Move.LEFT, Move.RIGHT]
         deltas = [(-1, 0), (1, 0), (0, -1), (0, 1)]
         
