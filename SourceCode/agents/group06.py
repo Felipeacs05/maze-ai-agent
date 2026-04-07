@@ -83,7 +83,7 @@ class Group06:
                 max_utility = utility
                 best_move = move_to_prize
 
-        # Caso de segurança: se a utilidade falhou mas há prêmios, tenta ir ao mais próximo
+        # Caso de segurança: se a utilidade falhou mas há prêmios, tenta ir ao mais próximoo
         if best_move == Move.STAY and prize_positions:
             closest_prize = min(prize_positions.keys(), key=lambda p: self.get_manhattan_dist(agent_position, p))
             _, best_move = self.a_star(maze, agent_position, closest_prize)
